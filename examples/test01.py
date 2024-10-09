@@ -3,6 +3,7 @@ import datetime
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 
+
 test01 = DAG(
     dag_id="test01",
     description="Print date.",
