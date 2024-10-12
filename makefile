@@ -2,33 +2,56 @@ COLOR_GREEN = \\033[32m
 COLOR_RED = \\033[31m
 COLOR_RESET = \\033[0m
 
-airflow-init:
+init:
 	mkdir -p ./dags ./logs ./plugins ./config
-	echo -e "AIRFLOW_UID=$(id -u)" > .env
-	docker compose up --detach
+	echo "AIRFLOW_UID=$$(id -u)" > .env
+	echo "DOCKER_GID=$$(getent group docker | cut -d: -f3)" >> .env
+	echo "USER_NAME=alicia" >> .env
+	echo "USER_ID=$$(id -u)" >> .env
+	docker compose up --detach --build
 
-airflow-clean:
-	rm -r ./dags ./logs ./plugins ./config
+clean:
+	rm -R ./dags ./logs ./plugins ./config
 	docker compose down --volumes --remove-orphans
 
-airflow-start:
-	docker compose up --detach
+start:
+	@docker compose up --detach
 
-airflow-stop:
-	docker compose down
+stop:
+	@docker compose down
 
-airflow-info:
-	docker compose exec airflow-worker airflow info
+info:
+	@docker compose exec airflow-worker airflow info
 
-airflow-bash:
-	docker exec -it airflow-worker bash
+bash:
+	@docker exec -it airflow-worker bash
 
-airflow-check:
+check:
 	@docker exec airflow-worker python /opt/airflow/dags/$(script)
 	@if [ $$? -eq 0 ]; then \
 		echo "${COLOR_GREEN}Script $(script) is OK!${COLOR_RESET}"; \
 	fi
 
-airflow-example:
-	cp examples/$(script) dags/
-	$(MAKE) airflow-check script=$(script)
+list-dags:
+	@docker exec -it airflow-worker airflow dags list
+
+list-tasks:
+	@docker exec -it airflow-worker airflow tasks list $(dag)
+
+test-task:
+	@docker exec -it airflow-worker airflow tasks test $(dag) $(task)
+
+cp-example:
+	@cp examples/$(script) dags/
+	@$(MAKE) check script=$(script)
+
+ex01:
+	@$(MAKE) cp-example script=test01.py
+
+ex02:
+	@$(MAKE) cp-example script=test02.py
+
+ex03:
+	@docker image build -t custom-python examples/test03/
+	@cp examples/test03/test03.py dags/
+	@$(MAKE) check script=test03.py
