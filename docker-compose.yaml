@@ -53,10 +53,6 @@ x-airflow-common:
   image: custom-airflow
   build:
     context: .
-    args:
-      DOCKER_GID: ${DOCKER_GID:-999}
-      USER_NAME: ${USER_NAME:-airflow}
-      USER_ID: ${USER_ID:-50000}
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -83,6 +79,7 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+    # NOTE: set AIRFLOW_UID=0 in .env to run containers with root user and have permission to access /var/run/docker.sock
     # - /var/run/docker.sock:/var/run/docker.sock
   user: "${AIRFLOW_UID:-50000}:0"
   networks:

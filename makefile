@@ -5,9 +5,6 @@ COLOR_RESET = \\033[0m
 init:
 	mkdir -p ./dags ./logs ./plugins ./config
 	echo "AIRFLOW_UID=$$(id -u)" > .env
-	echo "DOCKER_GID=$$(getent group docker | cut -d: -f3)" >> .env
-	echo "USER_NAME=alicia" >> .env
-	echo "USER_ID=$$(id -u)" >> .env
 	docker compose up --detach --build
 
 clean:
