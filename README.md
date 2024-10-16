@@ -22,7 +22,7 @@ To run your DAG in Airflow, add the DAG script to the `dags` folder. After that,
 
 ## DAG Examples
 
-Some DAG scripts created during this study are located in the `examples` folder. To use these examples, you can run the `make ex<example_number>` commands to configure the example and verify that the script is correct. For example, running `make ex04` will copy the `examples/test04.py` file to `dags` and verify that the script is working correctly.
+Some DAG scripts created during this study are located in the `examples` folder. To use these examples, you can run the `make ex<example_number>` commands to configure the example and verify that the script is correct. For example, running `make ex04` will copy the `examples/test04.py` file to `dags` and verify if the script does not raise an exception.
 
 ## Additional Features (make commands)
 
