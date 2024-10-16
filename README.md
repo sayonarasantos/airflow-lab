@@ -47,7 +47,7 @@ Some DAG scripts created during this study are located in the `examples` folder.
 - **Test a specific task:**
 
     ```sh
-    make test-dag dag=<dag_name> task=<task_name>
+    make test-task dag=<dag_name> task=<task_name>
     ```
 
 - **Check a DAG script:**

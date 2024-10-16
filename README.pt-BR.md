@@ -47,7 +47,7 @@ Alguns scripts de DAGs criados durante este estudo estão na pasta `examples`. P
 - **Testar uma task específica:**
 
     ```sh
-    make test-dag dag=<nome_da_dag> task=<nome_da_task>
+    make test-task dag=<nome_da_dag> task=<nome_da_task>
     ```
 
 - **Verificar um script de DAG:**
