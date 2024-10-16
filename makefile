@@ -52,3 +52,6 @@ ex03:
 	@docker image build -t custom-python examples/test03/
 	@cp examples/test03/test03.py dags/
 	@$(MAKE) check script=test03.py
+
+ex04:
+	@$(MAKE) cp-example script=test04.py
