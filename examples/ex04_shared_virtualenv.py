@@ -1,11 +1,10 @@
-from airflow import DAG
 from airflow.decorators import task, dag
 
 
 @task.virtualenv(
     requirements=['scikit-learn==1.5.2', 'pandas==2.2.3'],
     system_site_packages=False,
-    venv_cache_path='/tmp/test04_venv' 
+    venv_cache_path='/tmp/ex04_venv' 
 )
 def collect_data():
     import pandas as pd
@@ -23,7 +22,7 @@ def collect_data():
 @task.virtualenv(
     requirements=['scikit-learn==1.5.2'],
     system_site_packages=False,
-    venv_cache_path='/tmp/test04_venv'  # Reusing the same environment
+    venv_cache_path='/tmp/ex04_venv'  # Reusing the same environment
 )
 def prepare_data(data):
     from sklearn.model_selection import train_test_split
@@ -36,7 +35,7 @@ def prepare_data(data):
 
 
 @dag(
-    dag_id="test04",
+    dag_id="ex04",
     description="Wine model.",
     schedule=None,
     tags=["example"]

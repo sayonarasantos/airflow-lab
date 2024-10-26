@@ -43,15 +43,15 @@ cp-example:
 	@$(MAKE) check script=$(script)
 
 ex01:
-	@$(MAKE) cp-example script=test01.py
+	@$(MAKE) cp-example script=ex01_bashoperator.py
 
 ex02:
-	@$(MAKE) cp-example script=test02.py
+	@$(MAKE) cp-example script=ex02_pythonvirtualenvoperator.py
 
 ex03:
-	@docker image build -t custom-python examples/test03/
-	@cp examples/test03/test03.py dags/
-	@$(MAKE) check script=test03.py
+	@docker image build -t custom-python examples/ex03/
+	@cp examples/ex03/ex03.py dags/
+	@$(MAKE) check script=ex03.py
 
 ex04:
-	@$(MAKE) cp-example script=test04.py
+	@$(MAKE) cp-example script=ex04_shared_virtualenv.py

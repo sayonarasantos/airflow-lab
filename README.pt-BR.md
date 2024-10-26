@@ -22,7 +22,7 @@ Para executar seu DAG no Airflow, adicione o script do DAG na pasta `dags`. Em s
 
 ## Exemplos de DAGs
 
-Alguns scripts de DAGs criados durante este estudo estão na pasta `examples`. Para utilizá-los, você pode executar os comandos `make ex<numero_do_exemplo>` para configurar o exemplo e verificar se o script está correto. Por exemplo, o `make ex04` copiará o arquivo `examples/test04.py` para `dags` e verificará se o script não gera exceção.
+Alguns scripts de DAGs criados durante este estudo estão na pasta `examples`. Para utilizá-los, você pode executar os comandos `make ex<numero_do_exemplo>` para configurar o exemplo e verificar se o script está correto. Por exemplo, o `make ex04` copiará o arquivo `examples/ex04.py` para `dags` e verificará se o script não gera exceção.
 
 ## Funcionalidades adicionais
 

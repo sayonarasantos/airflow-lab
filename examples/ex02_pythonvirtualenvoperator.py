@@ -17,7 +17,7 @@ def collect_data():
 
 
 with DAG(
-    dag_id="test02",
+    dag_id="ex02",
     description="Wine model.",
     schedule=None,
     tags=["example"]

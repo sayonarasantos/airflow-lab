@@ -12,7 +12,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id="test03",
+    dag_id="ex03",
     description="Wine model (docker test)",
     schedule=None,
     default_args=default_args,
@@ -22,7 +22,7 @@ with DAG(
     collect_data = DockerOperator(
         task_id='collect_data',
         image='custom-python',
-        command="python test03-collect-data.py",
+        command="python ex03_collect_data.py.py",
         docker_url='unix://var/run/docker.sock',
         network_mode='airflow-lab',
         mount_tmp_dir=False,
