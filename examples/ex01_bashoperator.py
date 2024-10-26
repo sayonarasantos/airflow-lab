@@ -4,7 +4,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 
 
-ex = DAG(
+ex01 = DAG(
     dag_id="ex01",
     description="Print date.",
     schedule=None,
