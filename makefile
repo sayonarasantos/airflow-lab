@@ -50,7 +50,7 @@ ex02:
 
 ex03:
 	@docker image build -t custom-python examples/ex03/
-	@cp examples/ex03/ex03_dockeroperator.py dags/
+	@sudo cp examples/ex03/ex03_dockeroperator.py dags/
 	@$(MAKE) check script=ex03_dockeroperator.py
 
 ex04:

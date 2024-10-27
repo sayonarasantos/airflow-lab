@@ -22,7 +22,7 @@ with DAG(
     collect_data = DockerOperator(
         task_id='collect_data',
         image='custom-python',
-        command="python ex03_collect_data.py.py",
+        command="python ex03_task_collect_data.py",
         docker_url='unix://var/run/docker.sock',
         network_mode='airflow-lab',
         mount_tmp_dir=False,
